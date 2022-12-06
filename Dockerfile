@@ -1,4 +1,4 @@
-FROM python:3.7.15-alpine3.17
+FROM python:3.10-alpine
 WORKDIR /backend
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
