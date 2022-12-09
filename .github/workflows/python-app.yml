@@ -26,4 +26,4 @@ jobs:
         uses: docker/setup-qemu-action@v2
       - name: Building Image
         run: |
-          docker build -t app:v1 --file=Dockerfile .
+          docker build -t app:v1 --file=Dockerfile ../../
