@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  Testing:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt;
 
-  docker:
+  Build & Push Image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
