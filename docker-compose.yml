@@ -13,7 +13,7 @@ services:
     networks:
       - ticketsApp
   api:
-    image: tickets-app:latest
+    image: abir10101/tickets-app:latest
     container_name: flaskApp
     ports:
       - '5000:5000'
