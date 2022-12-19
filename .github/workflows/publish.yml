@@ -62,4 +62,4 @@ jobs:
         key: ${{ secrets.LINODE_SSHKEY }}
         script: |
           cd /root/ticketsDocker && docker-compose down
-          git pull && docker-compose up -d
+          git pull && docker-compose pull && docker-compose up -d
