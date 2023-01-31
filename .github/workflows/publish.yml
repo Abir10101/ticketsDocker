@@ -1,8 +1,6 @@
 name: Docker Build Push Deploy
 
-on:
-  push:
-    tags: [ 'v*.*.*' ]
+on: [push]
 
 env:
   REGISTRY: docker.io
