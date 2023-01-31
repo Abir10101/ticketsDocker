@@ -43,9 +43,9 @@ jobs:
         uses: Azure/k8s-set-context@v1
         with:
           method: kubeconfig
-          kubeconfig: ${{ secrets.KUBECONFIG }}
+          kubeconfig: ${{ env.KUBECONFIG }}
       - name: Depoloy with kubernates
         run: |
           cd ticketsDocker
           ls
-          kc --help
+          kubectl --help
