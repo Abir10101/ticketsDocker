@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: fast
+provisioner: rancher.io/local-path
+parameters:
+  type: pd-ssd
+reclaimPolicy: Retain
+allowVolumeExpansion: true

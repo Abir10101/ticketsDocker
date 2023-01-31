@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticketsapp-deployment
+  namespace: app
+  labels:
+    app: ticketsapp
+spec:
+  selector:
+    matchLabels:
+      app: ticketsapp
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ticketsapp
+    spec:
+      initContainers:
+        - name: init-db
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: db_url
+          command: ['sh', '-c', "until nslookup $(DB_URL).$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for database; sleep 2; done"]
+      containers:
+        - name: ticketsapp
+          image: abir10101/tickets-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-password
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: db_name
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-configmap
+                  key: db_url
+            - name: SECRET_KEY
+              value: "secret"
+          livenessProbe:
+            tcpSocket:
+              port: 5000
+      imagePullSecrets:
+            - name: docker-registry-secret
