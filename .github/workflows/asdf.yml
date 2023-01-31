@@ -19,5 +19,4 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
       - name: Depoloy with kubernates
         run: |
-          ls
-          kubectl --help
+          kubectl apply -k kubernates/
