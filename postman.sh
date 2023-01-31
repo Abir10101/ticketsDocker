@@ -1,4 +1,4 @@
-curl --location --request POST 'http://172.105.36.103:5000/register' \
+curl --location --request POST 'http://localhost:5000/register' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username":"test1",
@@ -7,11 +7,11 @@ curl --location --request POST 'http://172.105.36.103:5000/register' \
 }'
 
 
-curl --location --request POST 'http://172.105.36.103:5000/login' \
+curl --location --request POST 'http://localhost:5000/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "username":"test5",
-    "password": "test5"
+    "username":"test1",
+    "password": "test1"
 }'
 
 

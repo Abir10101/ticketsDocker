@@ -1,0 +1,11 @@
+resources:
+  - namespaces/app-ns.yml
+  - storageClasses/fast.yml
+  - persistedVolumes/mysql-pv.yml
+  - secrets/mysql-secret.yml
+  - configmaps/mysql-configmap.yml
+  - services/mysql-service.yml
+  - statefulset/mysql-statefulset.yml
+  - secrets/docker-registry-secret.yml
+  - deployments/ticketsapp-deployment.yml
+  - services/ticketsapp-service.yml
