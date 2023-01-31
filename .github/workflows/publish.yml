@@ -47,3 +47,4 @@ jobs:
       - name: Depoloy with kubernates
         run: |
           kubectl apply -k kubernates/
+          kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
