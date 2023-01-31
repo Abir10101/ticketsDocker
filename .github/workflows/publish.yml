@@ -46,4 +46,5 @@ jobs:
           kubeconfig: ${{ vars.KUBECONFIG }}
       - name: Depoloy with kubernates
         run: |
+          cat kubernates/deployments/ticketsapp-deployment.yml
           kubectl apply -k kubernates/
