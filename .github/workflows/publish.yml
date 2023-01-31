@@ -1,8 +1,8 @@
 name: Docker Build Push Deploy
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: [ 'v*.*.*' ]
 
 env:
   REGISTRY: docker.io
@@ -46,5 +46,4 @@ jobs:
           kubeconfig: ${{ vars.KUBECONFIG }}
       - name: Depoloy with kubernates
         run: |
-          cat kubernates/deployments/ticketsapp-deployment.yml
           kubectl apply -k kubernates/
