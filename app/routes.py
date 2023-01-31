@@ -11,7 +11,7 @@ import auth
 @app.route( '/', methods=['GET'] )
 def index():
     logger.log("Logs Running")
-    return jsonify({"data": "App Running.."})
+    return jsonify({"data": "App Running..."})
 
 
 @app.route( '/tickets', methods=['GET', 'POST', 'PATCH', 'DELETE'] )
