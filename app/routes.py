@@ -1,17 +1,17 @@
 from flask import jsonify, request
 from app import app, logger
 
-from app.utils import add_ticket, get_all_tickets, get_single_ticket, update_ticket, delete_ticket, add_branch, get_all_branches, update_branch, delete_branch
+from app.utils import add_ticket, get_all_tickets, get_single_ticket, update_ticket, delete_ticket, add_branch, get_all_branches, update_branch, delete_branch, health_check
 from app.decorators import token_required
 
 import auth
 
 
 
-@app.route( '/', methods=['GET'] )
-def index():
-    logger.log("Logs Running")
-    return jsonify({"data": "App Running..."})
+@app.route( '/health', methods=['GET'] )
+def _health():
+    health_check()
+    return jsonify({"status": 200, "data": "App Running..."})
 
 
 @app.route( '/tickets', methods=['GET', 'POST', 'PATCH', 'DELETE'] )

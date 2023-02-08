@@ -61,7 +61,10 @@ spec:
             - name: SECRET_KEY
               value: "secret"
           livenessProbe:
-            tcpSocket:
+            httpGet:
+              path: /health
               port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 3
       imagePullSecrets:
             - name: docker-registry-secret

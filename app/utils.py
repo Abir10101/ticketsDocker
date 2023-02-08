@@ -214,3 +214,13 @@ def check_user_ticket( dbcon :pymysql.connections.Connection, ticket_id :int, us
         return False
     else:
         return True
+
+
+def health_check():
+    logger.log("Logs Running")
+    con = db_connection()
+    cur = con.cursor()
+    cur.execute(
+        "SELECT 1;"
+    )
+    return
