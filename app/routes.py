@@ -10,6 +10,7 @@ import auth
 
 @app.route( '/health', methods=['GET'] )
 def _health():
+    logger.log("Logs Running")
     health_check()
     return jsonify({"status": 200, "data": "App Running..."})
 

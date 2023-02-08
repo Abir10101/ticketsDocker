@@ -39,12 +39,12 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      - name: Kubernetes set context
-        uses: Azure/k8s-set-context@v1
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ vars.KUBECONFIG }}
-      - name: Depoloy with kubernates
-        run: |
-          kubectl apply -k kubernates/
-          kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
+      # - name: Kubernetes set context
+      #   uses: Azure/k8s-set-context@v1
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ vars.KUBECONFIG }}
+      # - name: Depoloy with kubernates
+      #   run: |
+      #     kubectl apply -k kubernates/
+      #     kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
