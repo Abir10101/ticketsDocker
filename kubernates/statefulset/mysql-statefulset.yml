@@ -36,6 +36,10 @@ spec:
           volumeMounts:
             - name: mysql-claim
               mountPath: /var/lib/mysql
+          resources:
+            requests:
+              memory: "450Mi"
+              cpu: "50m"
   volumeClaimTemplates:
     - metadata:
         name: mysql-claim
