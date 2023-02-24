@@ -48,6 +48,5 @@ jobs:
         # python -m unittest Tests.test_auth
         # python -m unittest Tests.test_app
         sudo service mysql start
-        mysqladmin -u root password admin
-        mysql -padmin test
+        mysql -u root -p
         show tables;
