@@ -49,8 +49,8 @@ jobs:
       run: |
         export DB_HOST=0.0.0.0
         export DB_USER=root
-        export DB_PASSWORD=""
-        export DB_NAME=test
+        export DB_PASSWORD=admin
+        export DB_NAME=myapp
         export SECRET_KEY="secret_key"
         python -m unittest Tests.test_auth
         python -m unittest Tests.test_app
