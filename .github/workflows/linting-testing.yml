@@ -35,17 +35,13 @@ jobs:
     #     mysql version: '5.7'
     #     mysql database: 'myapp'
     #     mysql root password: 'admin'
-    - name: mysql
+    - name: install mysql
       run: |
         sudo service mysql stop
         apt update && apt install -y docker
         docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
         sleep 30s
-    # - name: buffering time for db container
-    #   uses: jakejarvis/wait-action@master
-    #   with:
-    #     time: '30s'
-    - name: test
+    - name: test application
       run: |
         export DB_HOST=0.0.0.0
         export DB_USER=root
