@@ -47,8 +47,7 @@ jobs:
     #     time: '30s'
     - name: test
       run: |
-        docker exec -i db mysql -padmin myapp
-        show tables;
+        docker exec -i db mysql -padmin myapp -e "show tables"
         # export DB_HOST=0.0.0.0
         # export DB_USER=root
         # export DB_PASSWORD=""
