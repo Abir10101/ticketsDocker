@@ -27,13 +27,14 @@ jobs:
     #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
     #     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
     #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Stop default mysql
       run: sudo service mysql stop
+    - name: Mysql
       uses: mirromutth/mysql-action@v1.1
       with:
         mysql version: '8.0'
         mysql database: 'myapp'
-        mysql root password: 'admin' # Required if "mysql user" is empty, default is empty. The root superuser password
+        mysql root password: 'admin'
       run: |
         # apt update && apt install -y docker
         # docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
