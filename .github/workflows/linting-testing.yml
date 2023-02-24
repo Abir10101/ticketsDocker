@@ -30,7 +30,7 @@ jobs:
     - name: Test with pytest
       run: |
         apt update && apt install -y docker
-        docker run --name db --network host -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
+        docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
         docker ps
         export DB_HOST=0.0.0.0
         export DB_USER=root
