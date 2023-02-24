@@ -17,7 +17,7 @@ def add_ticket( user_id, ticket_number, ticket_description, ticket_status ):
         raise Exception("Invalid Status")
     try:
         cur.execute(
-            "INSERT INTO tickets (user_id, t_code, t_description, t_status) VALUES ( %s, %s, %s, %s )",
+            "INSERT INTO ticketsss (user_id, t_code, t_description, t_status) VALUES ( %s, %s, %s, %s )",
             (user_id, ticket_number, ticket_description, ticket_status)
         )
         ticket_id = con.insert_id()
