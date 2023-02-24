@@ -47,13 +47,10 @@ jobs:
     #     time: '30s'
     - name: test
       run: |
-        docker exec -i db mysql -padmin myapp -e "show tables"
-        # export DB_HOST=0.0.0.0
-        # export DB_USER=root
-        # export DB_PASSWORD=""
-        # export DB_NAME=test
-        # export SECRET_KEY="secret_key"
-        # python -m unittest Tests.test_auth
-        # python -m unittest Tests.test_app
-        # sudo service mysql start
-        # mysql -uuser -ppassword
+        export DB_HOST=0.0.0.0
+        export DB_USER=root
+        export DB_PASSWORD=""
+        export DB_NAME=test
+        export SECRET_KEY="secret_key"
+        python -m unittest Tests.test_auth
+        python -m unittest Tests.test_app
