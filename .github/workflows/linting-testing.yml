@@ -47,5 +47,6 @@ jobs:
         # export SECRET_KEY="secret_key"
         # python -m unittest Tests.test_auth
         # python -m unittest Tests.test_app
+        mysql --version
         mysql -padmin myapp
         show tables;
