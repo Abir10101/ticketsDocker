@@ -1,10 +1,17 @@
 pipeline {
-    agent any
+    agent none 
     stages {
-        stage( 'test' ) {
+        stage('Build') { 
+            agent {
+                docker {
+                    image 'python:2-alpine' 
+                }
+            }
             steps {
-                sh 'apt update'
+                sh 'python --version'
             }
         }
     }
 }
+
+
