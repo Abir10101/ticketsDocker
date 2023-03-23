@@ -7,7 +7,7 @@ import werkzeug.security as _ws
 
 
 
-def register( username :str, password :str, name :str ) -> str
+def register( username :str, password :str, name :str ) -> str:
     hashed = _ws.generate_password_hash( password )
     secret = secrets.token_urlsafe(10)
     con = db_connection()
