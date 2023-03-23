@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                 python3 -m venv env && . ./env/bin/activate
                 pip install -r requirements.txt
-                export DB_HOST=0.0.0.0
+                export DB_HOST=127.0.0.1
                 export DB_USER=root
                 export DB_PASSWORD=admin
                 export DB_NAME=myapp
