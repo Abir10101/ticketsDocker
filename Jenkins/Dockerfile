@@ -1,10 +1,4 @@
-FROM mysql:8.0.31
-WORKDIR /docker-entrypoint-initdb.d
-ENV MYSQL_ROOT_PASSWORD admin
-ENV MYSQL_DATABASE myapp
-# COPY ../database/* .
-
-FROM python:3.10-alpine
+FROM python:3.10-slim-buster
 WORKDIR /backend
-COPY . .
+COPY ../ .
 RUN pip install --no-cache-dir -r requirements.txt
