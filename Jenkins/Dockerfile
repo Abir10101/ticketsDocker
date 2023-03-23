@@ -1,4 +1,4 @@
 FROM python:3.10-slim-buster
 WORKDIR /backend
 COPY . ../
-RUN pip install --no-cache-dir -r requirements.txt
+RUN ls && pip install --no-cache-dir -r requirements.txt
