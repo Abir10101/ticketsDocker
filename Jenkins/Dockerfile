@@ -5,4 +5,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 FROM mysql:8.0.31
 WORKDIR /docker-entrypoint-initdb.d
-COPY ../database/* .
+# COPY ../database/* .
