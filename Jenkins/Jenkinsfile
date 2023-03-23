@@ -4,7 +4,7 @@ pipeline {
         stage('Build Database') { 
             steps {
                 sh '''
-                docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
+                docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d --network=host -d mysql:8.0.31
                 sleep 30s
                 '''
             }
@@ -14,7 +14,7 @@ pipeline {
                 sh '''
                 python3 -m venv env && . ./env/bin/activate
                 pip install -r requirements.txt
-                export DB_HOST=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' bael-mysql-demo)
+                export DB_HOST=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' db)
                 export DB_USER=root
                 export DB_PASSWORD=admin
                 export DB_NAME=myapp
