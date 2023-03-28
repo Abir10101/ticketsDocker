@@ -14,7 +14,7 @@ jobs:
       uses: mickeygoussetorg/trigger-jenkins-job@v1
       with:
         jenkins-server: "http://172.105.36.103:8080"
-        jenkins-job: "ga2"
+        jenkins-job: "ga1"
         jenkins-username: "abir101"
         jenkins-pat: ${{ vars.JENKINS_TOKEN }}
         poll-time: 10
