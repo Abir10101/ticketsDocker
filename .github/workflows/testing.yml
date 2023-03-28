@@ -9,6 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: trigger jenkins Job
       uses: appleboy/jenkins-action@master
       with:
