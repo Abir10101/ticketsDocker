@@ -14,5 +14,5 @@ jobs:
       with:
         url: "http://172.105.36.103:8080"
         user: "abir101"
-        token: ${{ secrets.TOKEN }}
-        job: "foobar"
+        token: ${{ vars.JENKINS_TOKEN }}
+        job: "ga1"
