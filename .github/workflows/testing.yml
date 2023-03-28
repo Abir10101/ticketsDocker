@@ -15,4 +15,4 @@ jobs:
         url: "http://172.105.36.103:8080"
         user: "Abir Moulick"
         token: ${{ vars.JENKINS_TOKEN }}
-        job: "ga1"
+        job: "ga2"
