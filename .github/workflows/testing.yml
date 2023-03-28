@@ -11,9 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: trigger jenkins Job
-      uses: appleboy/jenkins-action@master
+      uses: mickeygoussetorg/trigger-jenkins-job@v1
       with:
-        url: "http://172.105.36.103:8080"
-        user: "abir101"
-        token: ${{ vars.JENKINS_TOKEN }}
-        job: "ga2"
+        jenkins-server: "http://172.105.36.103:8080"
+        jenkins-job: "ga2"
+        jenkins-username: "abir101"
+        jenkins-pat: ${{ vars.JENKINS_TOKEN }}
+        poll-time: 10
+        timeout-value: 600
+        verbose: true
