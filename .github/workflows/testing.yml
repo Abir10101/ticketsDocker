@@ -13,6 +13,6 @@ jobs:
       uses: appleboy/jenkins-action@master
       with:
         url: "http://172.105.36.103:8080"
-        user: "abir101"
+        user: "Abir Moulick"
         token: ${{ vars.JENKINS_TOKEN }}
         job: "ga1"
