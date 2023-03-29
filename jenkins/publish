@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage('Check Tag Name') { 
             steps {
-                if( '${tag_name}' == -1 )
-                {
-                    error("Tag Name Empty")
+                script{
+                    if( '${tag_name}' == -1 )
+                    {
+                        error("Tag Name Empty")
+                    }
                 }
             }
         }
