@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Echoing') { 
+        stage('Check Tag Name') { 
             steps {
-                sh '''
-                echo ${tag_name}
-                '''
-                error("Build failed because of this and that..")
+                if( '${tag_name}' == -1 )
+                {
+                    error("Tag Name Empty")
+                }
             }
         }
     }
