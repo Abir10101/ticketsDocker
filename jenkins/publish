@@ -6,6 +6,7 @@ pipeline {
                 sh '''
                 echo ${tag_name}
                 '''
+                error("Build failed because of this and that..")
             }
         }
     }
