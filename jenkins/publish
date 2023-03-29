@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Database') { 
+            steps {
+                sh '''
+                echo ${tag_name}
+                '''
+            }
+        }
+    }
+}
