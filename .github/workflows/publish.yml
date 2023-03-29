@@ -48,3 +48,22 @@
 #       #   run: |
 #       #     kubectl apply -k kubernates/
 #       #     kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
+name: Testing
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: trigger jenkins Job
+      uses: GoldenspearLLC/build-jenkins-job@master
+      with:
+        jenkins-url: "http://172.105.36.103:8080"
+        jenkins-token: ${{ vars.JENKINS_TOKEN }}
+        user: "abir101"
+        job-path: "job/publish"
+        job-params: "{'tag_name': 'v1.2'}"

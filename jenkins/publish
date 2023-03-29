@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build Database') { 
+        stage('Echoing') { 
             steps {
                 sh '''
                 echo ${tag_name}
