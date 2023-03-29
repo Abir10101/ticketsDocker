@@ -68,5 +68,5 @@ jobs:
         job_name: "publish"
         job_params: |
           {
-            "tag_name": "value_1",
+            "tag_name": "value_1"
           }
