@@ -8,6 +8,10 @@ pipeline {
                     {
                         error("Tag Name Empty")
                     }
+                    else
+                    {
+                        sh 'echo ${tag_name}'
+                    }
                 }
             }
         }
