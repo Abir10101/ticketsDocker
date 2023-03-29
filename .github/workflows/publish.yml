@@ -48,7 +48,7 @@
 #       #   run: |
 #       #     kubectl apply -k kubernates/
 #       #     kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
-name: Publish
+name: Publish 
 
 on:
   push:
