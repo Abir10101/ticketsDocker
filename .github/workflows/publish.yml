@@ -48,9 +48,11 @@
 #       #   run: |
 #       #     kubectl apply -k kubernates/
 #       #     kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
-name: Testing
+name: Publish
 
-on: [push, pull_request]
+on:
+  push:
+    tags: [ 'v*.*.*' ]
 
 permissions:
   contents: read
@@ -68,5 +70,5 @@ jobs:
         job_name: "publish"
         job_params: |
           {
-            "asdf": "value_1"
+            "tag_name": "${{ github.ref }}"
           }

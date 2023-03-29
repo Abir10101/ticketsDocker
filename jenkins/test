@@ -29,6 +29,7 @@ pipeline {
         always {
             sh '''
             docker rm -f db
+            docker system prune --all
             '''
         }
     }

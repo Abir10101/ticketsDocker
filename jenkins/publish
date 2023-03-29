@@ -1,19 +1,31 @@
 pipeline {
     agent any
-    stages {
-        stage('Check Tag Name') { 
+    parameters {
+        string(name:'DOCKER_REGISTRY', defaultValue:'')
+        string(name:'DOCKER_IMAGE', defaultValue:'abir10101/tickets-app')
+    }
+    stages{
+        stage('Check Tags') {
             steps {
+                sh 'echo ${TAG_NAME}'
                 script{
-                    if( '${tag_name}' == -1 || '${tag_name}' == "" )
-                    {
+                    if( params.TAG_NAME == "-1" || params.TAG_NAME.isEmpty() ) {
                         error("Tag Name Empty")
-                    }
-                    else
-                    {
-                        sh 'echo ${tag_name}'
                     }
                 }
             }
         }
+        // stage('Build & Push Image') {
+        //     steps {
+        //         script{
+        //             app = docker.build(params.DOCKER_IMAGE)
+        //             docker.withRegistry(params.DOCKER_REGISTRY, 'docker-cred')
+        //             {
+        //                 app.push(params.TAG_NAME)
+        //                 app.push("latest")
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
