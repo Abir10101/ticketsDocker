@@ -65,6 +65,9 @@ jobs:
       - name: Set output
         id: vars
         run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+      - name: Check output
+        run: |
+          echo ${{ steps.vars.outputs.tag }}
       - name: trigger jenkins Job
         uses: toptal/jenkins-job-trigger-action@master
         with:
@@ -76,4 +79,3 @@ jobs:
             {
               "TAG_NAME": ${{ steps.vars.outputs.tag }}
             }
-        run: echo ${{ steps.vars.outputs.tag }}
