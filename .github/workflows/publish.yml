@@ -63,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set output
-        id: vars
+        id: meta
         run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: trigger jenkins Job
         uses: toptal/jenkins-job-trigger-action@master
@@ -74,5 +74,5 @@ jobs:
           job_name: "publish"
           job_params: |
             {
-              "TAG_NAME": "v1.2.3"
+              "TAG_NAME": "${{ steps.meta.outputs.tag }}"
             }
