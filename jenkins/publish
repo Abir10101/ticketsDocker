@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage('Check Tags') {
             steps {
-                sh 'echo ${TAG_NAME}'
+                sh 'echo ${params.TAG_NAME}'
                 script{
                     if( params.TAG_NAME == "-1" || params.TAG_NAME == "" ) {
                         error("Tag Name Empty")
