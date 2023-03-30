@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'echo ${TAG_NAME}'
                 script{
-                    if( params.TAG_NAME == "-1" || params.TAG_NAME.isEmpty() ) {
+                    if( params.TAG_NAME == "-1" || params.TAG_NAME == "" ) {
                         error("Tag Name Empty")
                     }
                 }
