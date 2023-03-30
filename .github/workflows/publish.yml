@@ -70,5 +70,5 @@ jobs:
         job_name: "publish"
         job_params: |
           {
-            "tag_name": "${{ github.ref }}"
+            "TAG_NAME": "${{ github.ref }}"
           }
