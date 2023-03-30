@@ -64,15 +64,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set output
         id: vars
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-      - name: trigger jenkins Job
-        uses: toptal/jenkins-job-trigger-action@master
-        with:
-          jenkins_url: "http://172.105.36.103:8080"
-          jenkins_user: "abir101"
-          jenkins_token: ${{ vars.JENKINS_TOKEN }}
-          job_name: "publish"
-          job_params: |
-            {
-              "TAG_NAME": "${{ steps.vars.outputs.tag }}"
-            }
+        run: echo "${GITHUB_REF#refs/*/}"
+      # - name: trigger jenkins Job
+      #   uses: toptal/jenkins-job-trigger-action@master
+      #   with:
+      #     jenkins_url: "http://172.105.36.103:8080"
+      #     jenkins_user: "abir101"
+      #     jenkins_token: ${{ vars.JENKINS_TOKEN }}
+      #     job_name: "publish"
+      #     job_params: |
+      #       {
+      #         "TAG_NAME": "${{ steps.vars.outputs.tag }}"
+      #       }
