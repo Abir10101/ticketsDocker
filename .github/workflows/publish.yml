@@ -77,5 +77,5 @@ jobs:
           job_name: "publish"
           job_params: |
             {
-              "TAG_NAME": ${{ steps.vars.outputs.tag }}
+              "TAG_NAME": "${{ steps.vars.outputs.tag }}"
             }
