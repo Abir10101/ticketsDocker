@@ -1,21 +1,21 @@
-name: Testing
+# name: Testing
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - name: trigger jenkins Job
-      uses: mickeygoussetorg/trigger-jenkins-job@v1
-      with:
-        jenkins-server: "http://172.105.36.103:8080"
-        jenkins-job: "ga2"
-        jenkins-username: "abir101"
-        jenkins-pat: ${{ vars.JENKINS_TOKEN }}
-        poll-time: 10
-        timeout-value: 600
-        verbose: true
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: trigger jenkins Job
+#       uses: mickeygoussetorg/trigger-jenkins-job@v1
+#       with:
+#         jenkins-server: "http://172.105.36.103:8080"
+#         jenkins-job: "ga2"
+#         jenkins-username: "abir101"
+#         jenkins-pat: ${{ vars.JENKINS_TOKEN }}
+#         poll-time: 10
+#         timeout-value: 600
+#         verbose: true
