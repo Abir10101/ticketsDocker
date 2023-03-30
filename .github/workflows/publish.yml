@@ -50,7 +50,9 @@
 #       #     kubectl rollout restart -f kubernates/deployments/ticketsapp-deployment.yml
 name: Publish
 
-on: [push]
+on:
+  push:
+    tags: [ 'v*.*.*' ]
 
 permissions:
   contents: read
@@ -60,9 +62,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - name: Set output
-      #   id: vars
-      #   run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: trigger jenkins Job
         uses: toptal/jenkins-job-trigger-action@master
         with:
@@ -72,5 +74,5 @@ jobs:
           job_name: "publish"
           job_params: |
             {
-              "TAG_NAME": "v1.2.3"
+              "TAG_NAME": "${{ steps.vars.outputs.tag }}"
             }
