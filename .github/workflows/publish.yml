@@ -14,7 +14,6 @@ jobs:
   build_push_deploy:
     runs-on: ubuntu-latest
     steps:
-      if: github.event.release.target_commitish == 'main'
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Docker buildx
