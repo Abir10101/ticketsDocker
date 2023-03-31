@@ -1,9 +1,8 @@
 name: Publish
 
 on:
-  push:
-    branches: [jenkins-master]
-    tags: [ 'v*' ]
+  release:
+    types: published
 
 permissions:
   contents: read
