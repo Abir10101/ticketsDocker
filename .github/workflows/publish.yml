@@ -2,8 +2,7 @@ name: Docker Build Push Deploy
 
 on:
   release:
-    types: [published]
-    branches: [ main ]
+    types: [created]
 
 env:
   REGISTRY: docker.io
