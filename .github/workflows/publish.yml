@@ -1,9 +1,11 @@
 name: Docker Build Push Deploy
 
 on:
+  workflow_run:
+    workflows: ["Testing"]
+    types: [completed]
   release:
-    types: created
-    tags: [v*]
+    types: published
 
 env:
   REGISTRY: docker.io
