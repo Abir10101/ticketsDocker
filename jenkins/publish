@@ -16,17 +16,17 @@ pipeline {
                 }
             }
         }
-        // stage('Build & Push Image') {
-        //     steps {
-        //         script{
-        //             app = docker.build(params.DOCKER_IMAGE)
-        //             docker.withRegistry(params.DOCKER_REGISTRY, 'docker-cred')
-        //             {
-        //                 app.push(params.TAG_NAME)
-        //                 app.push("latest")
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Build & Push Image') {
+            steps {
+                script{
+                    app = docker.build(params.DOCKER_IMAGE)
+                    docker.withRegistry(params.DOCKER_REGISTRY, 'docker-cred')
+                    {
+                        app.push(params.TAG_NAME)
+                        app.push("latest")
+                    }
+                }
+            }
+        }
     }
 }
