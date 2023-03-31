@@ -1,9 +1,6 @@
 name: Docker Build Push Deploy
 
 on:
-  workflow_run:
-    workflows: ["Testing"]
-    types: [completed]
   release:
     types: published
 
