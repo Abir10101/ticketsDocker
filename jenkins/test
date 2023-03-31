@@ -4,6 +4,8 @@ pipeline {
         stage('Build Database') { 
             steps {
                 sh '''
+                docker rm -f db || true
+
                 docker run --name db -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=myapp -p 3306:3306 -v $PWD/database/:/docker-entrypoint-initdb.d -d mysql:8.0.31
                 sleep 30s
                 '''
@@ -29,6 +31,7 @@ pipeline {
         always {
             sh '''
             docker rm -f db
+            docker system prune --all --filter "label!=maintainer=abir10101"
             '''
         }
     }
