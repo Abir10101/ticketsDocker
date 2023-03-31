@@ -3,29 +3,30 @@ pipeline {
     parameters {
         string(name:'DOCKER_REGISTRY', defaultValue:'')
         string(name:'DOCKER_IMAGE', defaultValue:'abir10101/tickets-app')
+        string(name:'TAG_NAME', defaultValue:'-1')
     }
     stages{
         stage('Check Tags') {
             steps {
                 sh 'echo ${TAG_NAME}'
                 script{
-                    if( params.TAG_NAME == "-1" || params.TAG_NAME.isEmpty() ) {
+                    if( params.TAG_NAME == "-1" || params.TAG_NAME == "" ) {
                         error("Tag Name Empty")
                     }
                 }
             }
         }
-        // stage('Build & Push Image') {
-        //     steps {
-        //         script{
-        //             app = docker.build(params.DOCKER_IMAGE)
-        //             docker.withRegistry(params.DOCKER_REGISTRY, 'docker-cred')
-        //             {
-        //                 app.push(params.TAG_NAME)
-        //                 app.push("latest")
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Build & Push Image') {
+            steps {
+                script{
+                    app = docker.build(params.DOCKER_IMAGE)
+                    docker.withRegistry(params.DOCKER_REGISTRY, 'docker-cred')
+                    {
+                        app.push(params.TAG_NAME)
+                        app.push("latest")
+                    }
+                }
+            }
+        }
     }
 }
