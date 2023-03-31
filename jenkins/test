@@ -25,11 +25,10 @@ pipeline {
             }
         }
     }
-    post { 
+    post {
         always {
             sh '''
             docker rm -f db
-            docker system prune --all -f
             '''
         }
     }
