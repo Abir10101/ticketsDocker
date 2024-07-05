@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: ticketsapp
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -76,4 +76,4 @@ spec:
               memory: "64Mi"
               cpu: "50m"
       imagePullSecrets:
-            - name: docker-registry-secret
+        - name: docker-registry-secret
